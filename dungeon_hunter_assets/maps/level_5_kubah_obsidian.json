@@ -1,0 +1,300 @@
+{
+  "id": 5,
+  "name": "Level 5: Kubah Obsidian (Obsidian Vault)",
+  "theme_tile": "floor_obsidian",
+  "width": 15,
+  "height": 11,
+  "tile_size": 64,
+  "challenge_type": "Vault Lock Boss Arena (3 Rune Pillars + Obsidian Warden)",
+  "reward_skill": "relic_of_hunter",
+  "darkness_fog": false,
+  "spawn": {
+    "x": 7,
+    "y": 9
+  },
+  "gate": {
+    "x": 7,
+    "y": 1,
+    "keys_required": 0
+  },
+  "terrain": [
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ],
+    [
+      "wall",
+      "lava",
+      "lava",
+      "lava",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "lava",
+      "lava",
+      "lava",
+      "wall"
+    ],
+    [
+      "wall",
+      "lava",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "lava",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "lava",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "lava",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "lava",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "lava",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ]
+  ],
+  "traps": [
+    {
+      "type": "floor_spikes",
+      "x": 3,
+      "y": 4
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 6,
+      "y": 4
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 7,
+      "y": 4
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 8,
+      "y": 4
+    },
+    {
+      "type": "floor_spikes",
+      "x": 11,
+      "y": 4
+    },
+    {
+      "type": "floor_spikes",
+      "x": 6,
+      "y": 8
+    },
+    {
+      "type": "floor_spikes",
+      "x": 7,
+      "y": 8
+    },
+    {
+      "type": "floor_spikes",
+      "x": 8,
+      "y": 8
+    }
+  ],
+  "puzzles": [
+    {
+      "type": "rune_pillar",
+      "x": 4,
+      "y": 2
+    },
+    {
+      "type": "rune_pillar",
+      "x": 10,
+      "y": 2
+    },
+    {
+      "type": "rune_pillar",
+      "x": 7,
+      "y": 6
+    }
+  ],
+  "entities": [
+    {
+      "type": "enemy",
+      "enemy_kind": "obsidian_warden",
+      "x": 7,
+      "y": 2
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "bone_sentinel",
+      "x": 3,
+      "y": 5
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "bone_sentinel",
+      "x": 11,
+      "y": 5
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "echo_bat",
+      "x": 6,
+      "y": 7
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "echo_bat",
+      "x": 8,
+      "y": 7
+    }
+  ]
+}

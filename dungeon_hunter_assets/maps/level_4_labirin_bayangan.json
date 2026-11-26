@@ -1,0 +1,308 @@
+{
+  "id": 4,
+  "name": "Level 4: Labirin Bayangan (Shadow Labyrinth)",
+  "theme_tile": "floor_shadow",
+  "width": 15,
+  "height": 11,
+  "tile_size": 64,
+  "challenge_type": "Darkness Fog + Torch Relay + 3 Keys & Mimics",
+  "reward_skill": "phase_blink",
+  "darkness_fog": true,
+  "spawn": {
+    "x": 7,
+    "y": 9
+  },
+  "gate": {
+    "x": 7,
+    "y": 1,
+    "keys_required": 3
+  },
+  "terrain": [
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ]
+  ],
+  "traps": [
+    {
+      "type": "floor_spikes",
+      "x": 4,
+      "y": 3
+    },
+    {
+      "type": "floor_spikes",
+      "x": 10,
+      "y": 3
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 7,
+      "y": 4
+    },
+    {
+      "type": "floor_spikes",
+      "x": 7,
+      "y": 6
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 3,
+      "y": 7
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 11,
+      "y": 7
+    }
+  ],
+  "puzzles": [
+    {
+      "type": "torch_brazier",
+      "x": 4,
+      "y": 1
+    },
+    {
+      "type": "torch_brazier",
+      "x": 10,
+      "y": 1
+    },
+    {
+      "type": "torch_brazier",
+      "x": 7,
+      "y": 7
+    }
+  ],
+  "entities": [
+    {
+      "type": "key",
+      "variant": "key_crystal",
+      "x": 1,
+      "y": 1
+    },
+    {
+      "type": "key",
+      "variant": "key_crystal",
+      "x": 13,
+      "y": 1
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "shadow_mimic",
+      "x": 1,
+      "y": 3
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "bone_sentinel",
+      "x": 7,
+      "y": 3
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "shadow_mimic",
+      "x": 13,
+      "y": 3
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "echo_bat",
+      "x": 3,
+      "y": 5
+    },
+    {
+      "type": "key",
+      "variant": "key_crystal",
+      "x": 7,
+      "y": 5
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "echo_bat",
+      "x": 11,
+      "y": 5
+    }
+  ]
+}

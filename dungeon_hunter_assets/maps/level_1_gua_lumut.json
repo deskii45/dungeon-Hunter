@@ -1,0 +1,252 @@
+{
+  "id": 1,
+  "name": "Level 1: Gua Lumut (Moss Cavern)",
+  "theme_tile": "floor_moss",
+  "width": 15,
+  "height": 11,
+  "tile_size": 64,
+  "challenge_type": "Key Hunt & Rhythm Spikes",
+  "reward_skill": "dash_step",
+  "darkness_fog": false,
+  "spawn": {
+    "x": 7,
+    "y": 9
+  },
+  "gate": {
+    "x": 7,
+    "y": 1,
+    "keys_required": 1
+  },
+  "terrain": [
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ]
+  ],
+  "traps": [
+    {
+      "type": "floor_spikes",
+      "x": 4,
+      "y": 5
+    },
+    {
+      "type": "floor_spikes",
+      "x": 10,
+      "y": 5
+    },
+    {
+      "type": "floor_spikes",
+      "x": 3,
+      "y": 7
+    },
+    {
+      "type": "floor_spikes",
+      "x": 11,
+      "y": 7
+    }
+  ],
+  "puzzles": [],
+  "entities": [
+    {
+      "type": "key",
+      "variant": "key_gold",
+      "x": 4,
+      "y": 3
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "moss_slime",
+      "x": 10,
+      "y": 3
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "moss_slime",
+      "x": 7,
+      "y": 7
+    }
+  ]
+}

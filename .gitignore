@@ -1,0 +1,14 @@
+app/target/
+*.exe
+*.pdb
+*.log
+investigation.cany/
+inbox/
+capture/
+reference/
+craft.json
+feed.json
+transcript.json
+usage.json
+Cargo.lock
+!app/Cargo.lock

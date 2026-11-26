@@ -1,0 +1,295 @@
+{
+  "id": 3,
+  "name": "Level 3: Ruang Rune (Runic Sanctum)",
+  "theme_tile": "floor_rune",
+  "width": 15,
+  "height": 11,
+  "tile_size": 64,
+  "challenge_type": "Rune Sequence (4 Pillars) + 2 Keys",
+  "reward_skill": "stone_shield",
+  "darkness_fog": false,
+  "spawn": {
+    "x": 7,
+    "y": 9
+  },
+  "gate": {
+    "x": 7,
+    "y": 1,
+    "keys_required": 2
+  },
+  "terrain": [
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ]
+  ],
+  "traps": [
+    {
+      "type": "floor_spikes",
+      "x": 7,
+      "y": 3
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 3,
+      "y": 4
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 11,
+      "y": 4
+    },
+    {
+      "type": "floor_spikes",
+      "x": 3,
+      "y": 6
+    },
+    {
+      "type": "floor_spikes",
+      "x": 11,
+      "y": 6
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 7,
+      "y": 8
+    }
+  ],
+  "puzzles": [
+    {
+      "type": "rune_pillar",
+      "x": 1,
+      "y": 1
+    },
+    {
+      "type": "rune_pillar",
+      "x": 13,
+      "y": 1
+    },
+    {
+      "type": "rune_pillar",
+      "x": 1,
+      "y": 7
+    },
+    {
+      "type": "rune_pillar",
+      "x": 13,
+      "y": 7
+    }
+  ],
+  "entities": [
+    {
+      "type": "key",
+      "variant": "key_silver",
+      "x": 4,
+      "y": 1
+    },
+    {
+      "type": "key",
+      "variant": "key_silver",
+      "x": 10,
+      "y": 1
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "bone_sentinel",
+      "x": 2,
+      "y": 3
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "bone_sentinel",
+      "x": 12,
+      "y": 3
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "echo_bat",
+      "x": 7,
+      "y": 6
+    }
+  ]
+}

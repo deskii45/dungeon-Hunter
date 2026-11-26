@@ -1,0 +1,182 @@
+{
+  "version": "1.0.0",
+  "game": "Dungeon Hunter",
+  "sample_rate": 44100,
+  "format": "WAV 16-bit PCM Mono",
+  "audio": {
+    "bgm/lobby_theme.wav": {
+      "duration_sec": 16.0,
+      "loopable": true,
+      "recommended_volume": 0.55,
+      "description": "Musik latar atmosferik gua gelap untuk Main Menu / Lobby"
+    },
+    "bgm/dungeon_explore.wav": {
+      "duration_sec": 14.999,
+      "loopable": true,
+      "recommended_volume": 0.5,
+      "description": "Musik gameplay eksplorasi gua untuk Level 1 sampai Level 4"
+    },
+    "bgm/boss_obsidian_warden.wav": {
+      "duration_sec": 12.8,
+      "loopable": true,
+      "recommended_volume": 0.55,
+      "description": "Musik pertarungan intens melawan Mini-Boss Obsidian Warden di Level 5"
+    },
+    "bgm/victory_fanfare.wav": {
+      "duration_sec": 2.61,
+      "loopable": false,
+      "recommended_volume": 0.7,
+      "description": "Jingle kemenangan saat menamatkan Level 5"
+    },
+    "bgm/game_over_jingle.wav": {
+      "duration_sec": 2.04,
+      "loopable": false,
+      "recommended_volume": 0.65,
+      "description": "Jingle saat HP Kaelen habis (Game Over)"
+    },
+    "sfx/player/footstep_stone_1.wav": {
+      "duration_sec": 0.11,
+      "loopable": false,
+      "recommended_volume": 0.45,
+      "description": "Suara langkah kaki Kaelen di lantai batu gua (variasi 1)"
+    },
+    "sfx/player/footstep_stone_2.wav": {
+      "duration_sec": 0.11,
+      "loopable": false,
+      "recommended_volume": 0.45,
+      "description": "Suara langkah kaki Kaelen di lantai batu gua (variasi 2)"
+    },
+    "sfx/player/dagger_slash.wav": {
+      "duration_sec": 0.18,
+      "loopable": false,
+      "recommended_volume": 0.65,
+      "description": "Suara tebasan belati Kaelen"
+    },
+    "sfx/player/player_hurt.wav": {
+      "duration_sec": 0.28,
+      "loopable": false,
+      "recommended_volume": 0.8,
+      "description": "Suara saat Kaelen terkena serangan musuh atau jebakan"
+    },
+    "sfx/player/player_death.wav": {
+      "duration_sec": 0.65,
+      "loopable": false,
+      "recommended_volume": 0.8,
+      "description": "Suara saat Kaelen gugur"
+    },
+    "sfx/skills/skill_dash.wav": {
+      "duration_sec": 0.22,
+      "loopable": false,
+      "recommended_volume": 0.7,
+      "description": "Efek suara skill Dash Step"
+    },
+    "sfx/skills/skill_flare_pulse.wav": {
+      "duration_sec": 0.55,
+      "loopable": false,
+      "recommended_volume": 0.75,
+      "description": "Efek suara ledakan cahaya pembeku musuh Flare Pulse"
+    },
+    "sfx/skills/skill_stone_shield.wav": {
+      "duration_sec": 0.35,
+      "loopable": false,
+      "recommended_volume": 0.75,
+      "description": "Efek suara aktivasi perisai Stone Shield"
+    },
+    "sfx/skills/skill_phase_blink.wav": {
+      "duration_sec": 0.26,
+      "loopable": false,
+      "recommended_volume": 0.75,
+      "description": "Efek suara teleportasi pendek Phase Blink"
+    },
+    "sfx/enemies/enemy_hit.wav": {
+      "duration_sec": 0.14,
+      "loopable": false,
+      "recommended_volume": 0.75,
+      "description": "Suara saat musuh terkena tebasan Kaelen"
+    },
+    "sfx/enemies/enemy_death.wav": {
+      "duration_sec": 0.32,
+      "loopable": false,
+      "recommended_volume": 0.75,
+      "description": "Suara saat musuh dikalahkan"
+    },
+    "sfx/enemies/boss_slam.wav": {
+      "duration_sec": 0.6,
+      "loopable": false,
+      "recommended_volume": 0.85,
+      "description": "Suara hantaman gelombang batu Mini-Boss Obsidian Warden"
+    },
+    "sfx/enemies/boss_shield_break.wav": {
+      "duration_sec": 0.5,
+      "loopable": false,
+      "recommended_volume": 0.85,
+      "description": "Suara perisai Obsidian Warden pecah setelah 3 pilar rune aktif"
+    },
+    "sfx/world/key_pickup.wav": {
+      "duration_sec": 0.44,
+      "loopable": false,
+      "recommended_volume": 0.8,
+      "description": "Suara kilau saat mengambil kunci"
+    },
+    "sfx/world/spike_activate.wav": {
+      "duration_sec": 0.16,
+      "loopable": false,
+      "recommended_volume": 0.65,
+      "description": "Suara besi tajam saat jebakan duri lantai muncul"
+    },
+    "sfx/world/tile_crumble.wav": {
+      "duration_sec": 0.45,
+      "loopable": false,
+      "recommended_volume": 0.7,
+      "description": "Suara ubin batu retak dan runtuh ke jurang"
+    },
+    "sfx/world/block_push.wav": {
+      "duration_sec": 0.28,
+      "loopable": false,
+      "recommended_volume": 0.65,
+      "description": "Suara gesekan batu berat saat mendorong balok puzzle"
+    },
+    "sfx/world/pressure_plate.wav": {
+      "duration_sec": 0.18,
+      "loopable": false,
+      "recommended_volume": 0.7,
+      "description": "Suara klik mekanis saat pelat tekanan terinjak"
+    },
+    "sfx/world/rune_activate.wav": {
+      "duration_sec": 0.57,
+      "loopable": false,
+      "recommended_volume": 0.75,
+      "description": "Suara resonansi magis saat pilar rune dinyalakan"
+    },
+    "sfx/world/torch_ignite.wav": {
+      "duration_sec": 0.32,
+      "loopable": false,
+      "recommended_volume": 0.7,
+      "description": "Suara api menyala saat menyulut tungku obor"
+    },
+    "sfx/world/gate_open.wav": {
+      "duration_sec": 0.95,
+      "loopable": false,
+      "recommended_volume": 0.8,
+      "description": "Suara pintu batu terbuka dan portal gerbang aktif"
+    },
+    "sfx/ui/ui_hover.wav": {
+      "duration_sec": 0.055,
+      "loopable": false,
+      "recommended_volume": 0.5,
+      "description": "Blip halus saat mengarahkan pilihan di menu"
+    },
+    "sfx/ui/ui_click.wav": {
+      "duration_sec": 0.15,
+      "loopable": false,
+      "recommended_volume": 0.65,
+      "description": "Suara konfirmasi saat menekan tombol menu"
+    },
+    "sfx/ui/ui_back.wav": {
+      "duration_sec": 0.15,
+      "loopable": false,
+      "recommended_volume": 0.6,
+      "description": "Suara kembali atau jeda (Pause/Back)"
+    }
+  }
+}

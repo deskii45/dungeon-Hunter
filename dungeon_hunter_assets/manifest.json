@@ -1,0 +1,500 @@
+{
+  "version": "1.0.0",
+  "game": "Dungeon Hunter",
+  "tile_size": 64,
+  "assets": {
+    "backgrounds/main_menu_bg": {
+      "file": "backgrounds/main_menu_bg.png",
+      "size": [
+        1376,
+        768
+      ]
+    },
+    "backgrounds/victory_bg": {
+      "file": "backgrounds/victory_bg.png",
+      "size": [
+        1376,
+        768
+      ]
+    },
+    "player/kaelen_idle": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/player/frames/kaelen_idle_0.png",
+        "sprites/player/frames/kaelen_idle_1.png",
+        "sprites/player/frames/kaelen_idle_2.png",
+        "sprites/player/frames/kaelen_idle_3.png"
+      ],
+      "sheet": "sprites/player/sheets/kaelen_idle_sheet.png"
+    },
+    "player/kaelen_walk_down": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 8,
+      "frames": [
+        "sprites/player/frames/kaelen_walk_down_0.png",
+        "sprites/player/frames/kaelen_walk_down_1.png",
+        "sprites/player/frames/kaelen_walk_down_2.png",
+        "sprites/player/frames/kaelen_walk_down_3.png"
+      ],
+      "sheet": "sprites/player/sheets/kaelen_walk_down_sheet.png"
+    },
+    "player/kaelen_walk_up": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 8,
+      "frames": [
+        "sprites/player/frames/kaelen_walk_up_0.png",
+        "sprites/player/frames/kaelen_walk_up_1.png",
+        "sprites/player/frames/kaelen_walk_up_2.png",
+        "sprites/player/frames/kaelen_walk_up_3.png"
+      ],
+      "sheet": "sprites/player/sheets/kaelen_walk_up_sheet.png"
+    },
+    "player/kaelen_walk_side": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 8,
+      "frames": [
+        "sprites/player/frames/kaelen_walk_side_0.png",
+        "sprites/player/frames/kaelen_walk_side_1.png",
+        "sprites/player/frames/kaelen_walk_side_2.png",
+        "sprites/player/frames/kaelen_walk_side_3.png"
+      ],
+      "sheet": "sprites/player/sheets/kaelen_walk_side_sheet.png"
+    },
+    "player/kaelen_attack": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 12,
+      "frames": [
+        "sprites/player/frames/kaelen_attack_0.png",
+        "sprites/player/frames/kaelen_attack_1.png",
+        "sprites/player/frames/kaelen_attack_2.png",
+        "sprites/player/frames/kaelen_attack_3.png"
+      ],
+      "sheet": "sprites/player/sheets/kaelen_attack_sheet.png"
+    },
+    "player/kaelen_dash": {
+      "frame_count": 2,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 12,
+      "frames": [
+        "sprites/player/frames/kaelen_dash_0.png",
+        "sprites/player/frames/kaelen_dash_1.png"
+      ],
+      "sheet": "sprites/player/sheets/kaelen_dash_sheet.png"
+    },
+    "enemies/moss_slime/idle": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/enemies/moss_slime/frames/idle_0.png",
+        "sprites/enemies/moss_slime/frames/idle_1.png",
+        "sprites/enemies/moss_slime/frames/idle_2.png",
+        "sprites/enemies/moss_slime/frames/idle_3.png"
+      ],
+      "sheet": "sprites/enemies/moss_slime/sheets/idle_sheet.png"
+    },
+    "enemies/moss_slime/hop": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 8,
+      "frames": [
+        "sprites/enemies/moss_slime/frames/hop_0.png",
+        "sprites/enemies/moss_slime/frames/hop_1.png",
+        "sprites/enemies/moss_slime/frames/hop_2.png",
+        "sprites/enemies/moss_slime/frames/hop_3.png"
+      ],
+      "sheet": "sprites/enemies/moss_slime/sheets/hop_sheet.png"
+    },
+    "enemies/echo_bat/fly": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 10,
+      "frames": [
+        "sprites/enemies/echo_bat/frames/fly_0.png",
+        "sprites/enemies/echo_bat/frames/fly_1.png",
+        "sprites/enemies/echo_bat/frames/fly_2.png",
+        "sprites/enemies/echo_bat/frames/fly_3.png"
+      ],
+      "sheet": "sprites/enemies/echo_bat/sheets/fly_sheet.png"
+    },
+    "enemies/echo_bat/swoop": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 12,
+      "frames": [
+        "sprites/enemies/echo_bat/frames/swoop_0.png",
+        "sprites/enemies/echo_bat/frames/swoop_1.png",
+        "sprites/enemies/echo_bat/frames/swoop_2.png",
+        "sprites/enemies/echo_bat/frames/swoop_3.png"
+      ],
+      "sheet": "sprites/enemies/echo_bat/sheets/swoop_sheet.png"
+    },
+    "enemies/bone_sentinel/walk": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 8,
+      "frames": [
+        "sprites/enemies/bone_sentinel/frames/walk_0.png",
+        "sprites/enemies/bone_sentinel/frames/walk_1.png",
+        "sprites/enemies/bone_sentinel/frames/walk_2.png",
+        "sprites/enemies/bone_sentinel/frames/walk_3.png"
+      ],
+      "sheet": "sprites/enemies/bone_sentinel/sheets/walk_sheet.png"
+    },
+    "enemies/bone_sentinel/thrust": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 10,
+      "frames": [
+        "sprites/enemies/bone_sentinel/frames/thrust_0.png",
+        "sprites/enemies/bone_sentinel/frames/thrust_1.png",
+        "sprites/enemies/bone_sentinel/frames/thrust_2.png",
+        "sprites/enemies/bone_sentinel/frames/thrust_3.png"
+      ],
+      "sheet": "sprites/enemies/bone_sentinel/sheets/thrust_sheet.png"
+    },
+    "enemies/shadow_mimic/chest_idle": {
+      "frame_count": 2,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 3,
+      "frames": [
+        "sprites/enemies/shadow_mimic/frames/chest_idle_0.png",
+        "sprites/enemies/shadow_mimic/frames/chest_idle_1.png"
+      ],
+      "sheet": "sprites/enemies/shadow_mimic/sheets/chest_idle_sheet.png"
+    },
+    "enemies/shadow_mimic/ambush": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 10,
+      "frames": [
+        "sprites/enemies/shadow_mimic/frames/ambush_0.png",
+        "sprites/enemies/shadow_mimic/frames/ambush_1.png",
+        "sprites/enemies/shadow_mimic/frames/ambush_2.png",
+        "sprites/enemies/shadow_mimic/frames/ambush_3.png"
+      ],
+      "sheet": "sprites/enemies/shadow_mimic/sheets/ambush_sheet.png"
+    },
+    "enemies/obsidian_warden/idle": {
+      "frame_count": 4,
+      "frame_size": [
+        96,
+        96
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/enemies/obsidian_warden/frames/idle_0.png",
+        "sprites/enemies/obsidian_warden/frames/idle_1.png",
+        "sprites/enemies/obsidian_warden/frames/idle_2.png",
+        "sprites/enemies/obsidian_warden/frames/idle_3.png"
+      ],
+      "sheet": "sprites/enemies/obsidian_warden/sheets/idle_sheet.png"
+    },
+    "enemies/obsidian_warden/slam": {
+      "frame_count": 4,
+      "frame_size": [
+        96,
+        96
+      ],
+      "recommended_fps": 8,
+      "frames": [
+        "sprites/enemies/obsidian_warden/frames/slam_0.png",
+        "sprites/enemies/obsidian_warden/frames/slam_1.png",
+        "sprites/enemies/obsidian_warden/frames/slam_2.png",
+        "sprites/enemies/obsidian_warden/frames/slam_3.png"
+      ],
+      "sheet": "sprites/enemies/obsidian_warden/sheets/slam_sheet.png"
+    },
+    "enemies/obsidian_warden/shield_break": {
+      "frame_count": 2,
+      "frame_size": [
+        96,
+        96
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/enemies/obsidian_warden/frames/shield_break_0.png",
+        "sprites/enemies/obsidian_warden/frames/shield_break_1.png"
+      ],
+      "sheet": "sprites/enemies/obsidian_warden/sheets/shield_break_sheet.png"
+    },
+    "items/keys/key_gold": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/items/keys/frames/key_gold_0.png",
+        "sprites/items/keys/frames/key_gold_1.png",
+        "sprites/items/keys/frames/key_gold_2.png",
+        "sprites/items/keys/frames/key_gold_3.png"
+      ],
+      "sheet": "sprites/items/keys/sheets/key_gold_sheet.png"
+    },
+    "items/keys/key_bronze": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/items/keys/frames/key_bronze_0.png",
+        "sprites/items/keys/frames/key_bronze_1.png",
+        "sprites/items/keys/frames/key_bronze_2.png",
+        "sprites/items/keys/frames/key_bronze_3.png"
+      ],
+      "sheet": "sprites/items/keys/sheets/key_bronze_sheet.png"
+    },
+    "items/keys/key_silver": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/items/keys/frames/key_silver_0.png",
+        "sprites/items/keys/frames/key_silver_1.png",
+        "sprites/items/keys/frames/key_silver_2.png",
+        "sprites/items/keys/frames/key_silver_3.png"
+      ],
+      "sheet": "sprites/items/keys/sheets/key_silver_sheet.png"
+    },
+    "items/keys/key_crystal": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/items/keys/frames/key_crystal_0.png",
+        "sprites/items/keys/frames/key_crystal_1.png",
+        "sprites/items/keys/frames/key_crystal_2.png",
+        "sprites/items/keys/frames/key_crystal_3.png"
+      ],
+      "sheet": "sprites/items/keys/sheets/key_crystal_sheet.png"
+    },
+    "items/skills/dash_step": {
+      "file": "sprites/items/skills/dash_step.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    "items/skills/flare_pulse": {
+      "file": "sprites/items/skills/flare_pulse.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    "items/skills/stone_shield": {
+      "file": "sprites/items/skills/stone_shield.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    "items/skills/phase_blink": {
+      "file": "sprites/items/skills/phase_blink.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    "items/skills/relic_of_hunter": {
+      "file": "sprites/items/skills/relic_of_hunter.png",
+      "size": [
+        64,
+        64
+      ]
+    },
+    "traps_and_puzzles/floor_spikes/spikes": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/traps_and_puzzles/floor_spikes/frames/spikes_0.png",
+        "sprites/traps_and_puzzles/floor_spikes/frames/spikes_1.png",
+        "sprites/traps_and_puzzles/floor_spikes/frames/spikes_2.png",
+        "sprites/traps_and_puzzles/floor_spikes/frames/spikes_3.png"
+      ],
+      "sheet": "sprites/traps_and_puzzles/floor_spikes/sheets/spikes_sheet.png"
+    },
+    "traps_and_puzzles/crumbling_tile/crumble": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/traps_and_puzzles/crumbling_tile/frames/crumble_0.png",
+        "sprites/traps_and_puzzles/crumbling_tile/frames/crumble_1.png",
+        "sprites/traps_and_puzzles/crumbling_tile/frames/crumble_2.png",
+        "sprites/traps_and_puzzles/crumbling_tile/frames/crumble_3.png"
+      ],
+      "sheet": "sprites/traps_and_puzzles/crumbling_tile/sheets/crumble_sheet.png"
+    },
+    "traps_and_puzzles/pressure_plate/plate": {
+      "frame_count": 2,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 4,
+      "frames": [
+        "sprites/traps_and_puzzles/pressure_plate/frames/plate_0.png",
+        "sprites/traps_and_puzzles/pressure_plate/frames/plate_1.png"
+      ],
+      "sheet": "sprites/traps_and_puzzles/pressure_plate/sheets/plate_sheet.png"
+    },
+    "traps_and_puzzles/rune_pillar/pillar_active": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/traps_and_puzzles/rune_pillar/frames/pillar_active_0.png",
+        "sprites/traps_and_puzzles/rune_pillar/frames/pillar_active_1.png",
+        "sprites/traps_and_puzzles/rune_pillar/frames/pillar_active_2.png",
+        "sprites/traps_and_puzzles/rune_pillar/frames/pillar_active_3.png"
+      ],
+      "sheet": "sprites/traps_and_puzzles/rune_pillar/sheets/pillar_active_sheet.png"
+    },
+    "traps_and_puzzles/torch_brazier/brazier_lit": {
+      "frame_count": 4,
+      "frame_size": [
+        64,
+        64
+      ],
+      "recommended_fps": 8,
+      "frames": [
+        "sprites/traps_and_puzzles/torch_brazier/frames/brazier_lit_0.png",
+        "sprites/traps_and_puzzles/torch_brazier/frames/brazier_lit_1.png",
+        "sprites/traps_and_puzzles/torch_brazier/frames/brazier_lit_2.png",
+        "sprites/traps_and_puzzles/torch_brazier/frames/brazier_lit_3.png"
+      ],
+      "sheet": "sprites/traps_and_puzzles/torch_brazier/sheets/brazier_lit_sheet.png"
+    },
+    "traps_and_puzzles/dungeon_gate/gate_opening": {
+      "frame_count": 4,
+      "frame_size": [
+        96,
+        96
+      ],
+      "recommended_fps": 6,
+      "frames": [
+        "sprites/traps_and_puzzles/dungeon_gate/frames/gate_opening_0.png",
+        "sprites/traps_and_puzzles/dungeon_gate/frames/gate_opening_1.png",
+        "sprites/traps_and_puzzles/dungeon_gate/frames/gate_opening_2.png",
+        "sprites/traps_and_puzzles/dungeon_gate/frames/gate_opening_3.png"
+      ],
+      "sheet": "sprites/traps_and_puzzles/dungeon_gate/sheets/gate_opening_sheet.png"
+    },
+    "traps_and_puzzles/dungeon_gate/gate_portal": {
+      "frame_count": 4,
+      "frame_size": [
+        96,
+        96
+      ],
+      "recommended_fps": 8,
+      "frames": [
+        "sprites/traps_and_puzzles/dungeon_gate/frames/gate_portal_0.png",
+        "sprites/traps_and_puzzles/dungeon_gate/frames/gate_portal_1.png",
+        "sprites/traps_and_puzzles/dungeon_gate/frames/gate_portal_2.png",
+        "sprites/traps_and_puzzles/dungeon_gate/frames/gate_portal_3.png"
+      ],
+      "sheet": "sprites/traps_and_puzzles/dungeon_gate/sheets/gate_portal_sheet.png"
+    }
+  },
+  "maps": [
+    {
+      "id": 1,
+      "name": "Level 1: Gua Lumut (Moss Cavern)",
+      "json": "maps/level_1_gua_lumut.json",
+      "preview": "maps/previews/level_1_gua_lumut_preview.png"
+    },
+    {
+      "id": 2,
+      "name": "Level 2: Lorong Gema (Echo Tunnels)",
+      "json": "maps/level_2_lorong_gema.json",
+      "preview": "maps/previews/level_2_lorong_gema_preview.png"
+    },
+    {
+      "id": 3,
+      "name": "Level 3: Ruang Rune (Runic Sanctum)",
+      "json": "maps/level_3_ruang_rune.json",
+      "preview": "maps/previews/level_3_ruang_rune_preview.png"
+    },
+    {
+      "id": 4,
+      "name": "Level 4: Labirin Bayangan (Shadow Labyrinth)",
+      "json": "maps/level_4_labirin_bayangan.json",
+      "preview": "maps/previews/level_4_labirin_bayangan_preview.png"
+    },
+    {
+      "id": 5,
+      "name": "Level 5: Kubah Obsidian (Obsidian Vault)",
+      "json": "maps/level_5_kubah_obsidian.json",
+      "preview": "maps/previews/level_5_kubah_obsidian_preview.png"
+    }
+  ]
+}

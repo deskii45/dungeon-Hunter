@@ -1,0 +1,300 @@
+{
+  "id": 2,
+  "name": "Level 2: Lorong Gema (Echo Tunnels)",
+  "theme_tile": "floor_echo",
+  "width": 15,
+  "height": 11,
+  "tile_size": 64,
+  "challenge_type": "Push-Block Pressure Plates + 2 Keys",
+  "reward_skill": "flare_pulse",
+  "darkness_fog": false,
+  "spawn": {
+    "x": 7,
+    "y": 9
+  },
+  "gate": {
+    "x": 7,
+    "y": 1,
+    "keys_required": 2
+  },
+  "terrain": [
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "wall",
+      "wall",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "wall",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "floor",
+      "wall"
+    ],
+    [
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall"
+    ]
+  ],
+  "traps": [
+    {
+      "type": "crumbling_tile",
+      "x": 6,
+      "y": 4
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 7,
+      "y": 4
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 8,
+      "y": 4
+    },
+    {
+      "type": "floor_spikes",
+      "x": 2,
+      "y": 6
+    },
+    {
+      "type": "floor_spikes",
+      "x": 12,
+      "y": 6
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 4,
+      "y": 8
+    },
+    {
+      "type": "crumbling_tile",
+      "x": 10,
+      "y": 8
+    }
+  ],
+  "puzzles": [
+    {
+      "type": "pressure_plate",
+      "x": 1,
+      "y": 3
+    },
+    {
+      "type": "pressure_plate",
+      "x": 13,
+      "y": 3
+    },
+    {
+      "type": "push_block",
+      "x": 2,
+      "y": 4
+    },
+    {
+      "type": "push_block",
+      "x": 12,
+      "y": 4
+    }
+  ],
+  "entities": [
+    {
+      "type": "key",
+      "variant": "key_bronze",
+      "x": 1,
+      "y": 1
+    },
+    {
+      "type": "key",
+      "variant": "key_bronze",
+      "x": 13,
+      "y": 1
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "echo_bat",
+      "x": 7,
+      "y": 3
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "moss_slime",
+      "x": 6,
+      "y": 6
+    },
+    {
+      "type": "enemy",
+      "enemy_kind": "moss_slime",
+      "x": 8,
+      "y": 6
+    }
+  ]
+}
