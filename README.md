@@ -121,15 +121,27 @@ dungeon-hunter/
 
 ---
 
-## 🚀 Cara Menjalankan / How to Run
+## 🚀 Cara Menjalankan & Build / How to Run & Build
 
-### Prasyarat (Prerequisites)
+### A. Main Langsung di Laptop Windows Lain (Tanpa Install Rust)
+
+File `dungeon_hunter.exe` versi *release* portabel (*static CRT*, tanpa perlu Visual C++ Redistributable atau Rust) sudah tersedia langsung di root repository ini:
+
+1. Download repository (klik **Code → Download ZIP** lalu ekstrak, atau `git clone`).
+2. Pastikan **`dungeon_hunter.exe`** berada satu folder dengan folder **`dungeon_hunter_assets/`**.
+3. Klik ganda **`dungeon_hunter.exe`** untuk langsung bermain!
+
+> **💡 Tip jika ingin menyalin ke laptop lain lewat flashdisk/ZIP:** cukup salin **2 item saja**, yaitu file `dungeon_hunter.exe` dan folder `dungeon_hunter_assets/`.
+
+---
+
+### B. Cara Build Ulang dari Source Code (Untuk Developer)
+
+#### Prasyarat (Prerequisites)
 
 1. **Rust toolchain** — Install dari [https://rustup.rs/](https://rustup.rs/)
 2. **Windows 10/11** — Game menggunakan Win32 API untuk audio & input
 3. **Git** (opsional, untuk clone repository)
-
-### Langkah-langkah
 
 #### 1. Clone Repository
 
@@ -138,7 +150,7 @@ git clone https://github.com/deskii45/dungeon-Hunter.git
 cd dungeon-Hunter
 ```
 
-#### 2. Build & Run dengan build.bat (Cara Termudah)
+#### 2. Build & Run Mode Debug (Untuk Pengembangan)
 
 ```bash
 cd app
@@ -147,29 +159,35 @@ build.bat run
 
 Ini akan:
 - Compile game menggunakan `cargo build --offline`
-- Langsung menjalankan `target\debug\dungeon_hunter.exe`
+- Langsung menjalankan `app\target\debug\dungeon_hunter.exe`
 
-#### 3. Atau Build Manual dengan Cargo
+#### 3. Build File `.exe` Release Portabel (Untuk Dibagikan ke Laptop Lain)
 
 ```bash
 cd app
-cargo build --release
+build.bat release
 ```
 
-Lalu jalankan executable yang dihasilkan:
+Script ini menjalankan kompilasi *release* dengan `-C target-feature=+crt-static` (agar tidak membutuhkan `VCRUNTIME140.dll` di laptop lain) dan otomatis menyalin hasilnya ke `dungeon_hunter.exe` di folder root proyek.
 
-```bash
-.\target\release\dungeon_hunter.exe
+Atau secara manual di PowerShell:
+
+```powershell
+cd app
+$env:RUSTFLAGS="-C target-feature=+crt-static"
+cargo build --release --offline
+copy target\release\dungeon_hunter.exe ..\dungeon_hunter.exe
 ```
 
 ### 📍 Lokasi File Executable
 
 | Build Mode | Lokasi File |
 |------------|-------------|
+| Release Portabel (Siap Pakai) | `dungeon_hunter.exe` (folder root) |
+| Release (Cargo output) | `app/target/release/dungeon_hunter.exe` |
 | Debug | `app/target/debug/dungeon_hunter.exe` |
-| Release | `app/target/release/dungeon_hunter.exe` |
 
-> **⚠️ Penting:** Jalankan game dari root folder project (`dungeon-hunter/`), agar path ke folder `dungeon_hunter_assets/` dapat ditemukan oleh game.
+> **⚠️ Penting:** Pastikan folder `dungeon_hunter_assets/` selalu berada di folder yang sama (atau folder induk) dari `dungeon_hunter.exe` agar seluruh sprite, peta JSON, popup tutorial, dan audio WAV dapat dimuat.
 
 ---
 

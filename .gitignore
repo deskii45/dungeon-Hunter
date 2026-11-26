@@ -1,5 +1,6 @@
 app/target/
 *.exe
+!dungeon_hunter.exe
 *.pdb
 *.log
 investigation.cany/
