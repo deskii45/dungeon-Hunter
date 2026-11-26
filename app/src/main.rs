@@ -40,6 +40,7 @@ enum Mode {
     Menu,
     Difficulty,
     Options,
+    Tutorial,
     Play,
     Pause,
     GameOver,
@@ -63,6 +64,8 @@ pub struct Raw {
     enter_press: bool,
     esc_press: bool,
     f3_press: bool,
+    h: bool,
+    h_press: bool,
     /// set when this frame's menu pick was already acted on (see `handle_global_keys`)
     picked: bool,
     /// set by a moving menu press so the Enter press sampled in the same frame is
@@ -125,6 +128,9 @@ struct Game {
     prev_sel: usize,
     step_t: f32,
     step_alt: bool,
+    tutorial_seen: [bool; 5],
+    tutorial_t: f32,
+    tutorial_first_open: bool,
     script: Option<Script>,
 }
 
@@ -169,6 +175,7 @@ async fn main_loop() {
     let args: Vec<String> = std::env::args().collect();
     let shot_path = arg_value(&args, "--screenshot");
     let test_path = arg_value(&args, "--self-test");
+    let tutorial_arg: Option<usize> = arg_value(&args, "--tutorial").and_then(|s| s.parse::<usize>().ok());
     let debug = args.iter().any(|a| a == "--debug");
 
     // Disable Windows IME so WASD letter keys are never intercepted or delayed by IME composition
@@ -204,6 +211,9 @@ async fn main_loop() {
         prev_sel: 0,
         step_t: 0.0,
         step_alt: false,
+        tutorial_seen: [false; 5],
+        tutorial_t: 0.0,
+        tutorial_first_open: false,
         script: None,
     };
 
@@ -212,6 +222,9 @@ async fn main_loop() {
     }
     if game.test_path.is_some() {
         game.start_script();
+    } else if let Some(lvl) = tutorial_arg {
+        let idx = lvl.saturating_sub(1).min(game.levels.len() - 1);
+        game.start_level(idx);
     }
 
     loop {
@@ -222,14 +235,17 @@ async fn main_loop() {
         game.menu.mouse = vec2(mouse_position().0, mouse_position().1);
         game.menu.clicked = is_mouse_button_pressed(MouseButton::Left);
 
+        let was_play = game.mode == Mode::Play;
         let keys = match &mut game.script {
             Some(sc) => script_keys(&game.prev, sc),
-            None => read_keys(&game.prev, &game.options, game.mode == Mode::Play),
+            None => read_keys(&game.prev, &game.options, was_play),
         };
         let mut raw = keys.raw;
         game.handle_global_keys(&mut raw, &keys, dt);
         game.prev = raw;
-        game.update(dt, &keys);
+        if was_play && game.mode == Mode::Play {
+            game.update(dt, &keys);
+        }
         game.sync_audio();
         game.draw();
 
@@ -242,7 +258,10 @@ async fn main_loop() {
         }
 
         if game.shot_path.is_some() && game.frame >= 120 {
-            let img = get_screen_data();
+            let mut img = get_screen_data();
+            for px in img.bytes.chunks_exact_mut(4) {
+                px[3] = 255;
+            }
             let path = game.shot_path.take().unwrap();
             if let Some(dir) = std::path::Path::new(&path).parent() {
                 if !dir.as_os_str().is_empty() {
@@ -356,7 +375,9 @@ fn read_keys(prev: &Raw, o: &OptionsState, in_play: bool) -> FrameKeys {
 fn read_raw(prev: &Raw, o: &OptionsState, in_play: bool) -> Raw {
     let use_wasd = !in_play || o.ctrl_mode == 0 || o.ctrl_mode == 1;
     let use_arrows = !in_play || o.ctrl_mode == 0 || o.ctrl_mode == 2;
-    let mouse_attack = in_play && is_mouse_button_pressed(MouseButton::Left);
+    let (mx, my) = mouse_position();
+    let on_help_badge = mx >= screen_width() - 180.0 && my >= screen_height() - 48.0;
+    let mouse_attack = in_play && !on_help_badge && is_mouse_button_pressed(MouseButton::Left);
     let mouse_dash = in_play && is_mouse_button_pressed(MouseButton::Right);
 
     #[cfg(target_os = "windows")]
@@ -384,6 +405,7 @@ fn read_raw(prev: &Raw, o: &OptionsState, in_play: bool) -> Raw {
             let (q_d, q_p) = hw_keys::vk_state(0x51);
             let (r_d, r_p) = hw_keys::vk_state(0x52);
             let (f_d, f_p) = hw_keys::vk_state(0x46);
+            let (h_d, h_p) = hw_keys::vk_state(0x48);
             let ent_d = hw_keys::vk_down(0x0D);
             let esc_d = hw_keys::vk_down(0x1B);
             let f3_d = hw_keys::vk_down(0x72);
@@ -403,6 +425,8 @@ fn read_raw(prev: &Raw, o: &OptionsState, in_play: bool) -> Raw {
                 enter_press: is_key_pressed(KeyCode::Enter) || (!prev.attack && sp_d) || (ent_d && is_key_pressed(KeyCode::Enter)),
                 esc_press: is_key_pressed(KeyCode::Escape) || (esc_d && is_key_pressed(KeyCode::Escape)),
                 f3_press: is_key_pressed(KeyCode::F3) || (f3_d && is_key_pressed(KeyCode::F3)),
+                h: h_d,
+                h_press: !prev.h && (h_d || h_p),
                 picked: false,
                 enter_held: false,
                 four_way: o.four_way,
@@ -438,6 +462,8 @@ fn read_raw(prev: &Raw, o: &OptionsState, in_play: bool) -> Raw {
             enter_press: is_key_pressed(KeyCode::Enter) || is_key_pressed(KeyCode::Space),
             esc_press: is_key_pressed(KeyCode::Escape),
             f3_press: is_key_pressed(KeyCode::F3),
+            h: is_key_down(KeyCode::H),
+            h_press: is_key_pressed(KeyCode::H),
             picked: false,
             enter_held: false,
             four_way: o.four_way,
@@ -499,13 +525,53 @@ impl Game {
         let skills = self.skills;
         let i = i.min(self.levels.len() - 1);
         self.play = Play::new(i, self.levels[i].clone(), &self.settings, skills);
-        self.mode = Mode::Play;
         self.scene_t = 0.0;
+        if self.test_path.is_none() && self.script.is_none() && !self.tutorial_seen[i] {
+            self.tutorial_seen[i] = true;
+            self.mode = Mode::Tutorial;
+            self.tutorial_t = 0.0;
+            self.tutorial_first_open = true;
+        } else {
+            self.mode = Mode::Play;
+        }
+    }
+
+    fn open_tutorial(&mut self) {
+        self.mode = Mode::Tutorial;
+        self.tutorial_t = 0.0;
+        self.tutorial_first_open = false;
+    }
+
+    fn close_tutorial(&mut self) {
+        self.mode = Mode::Play;
+        if self.tutorial_first_open {
+            self.scene_t = 0.0;
+            self.tutorial_first_open = false;
+        }
     }
 
     pub fn handle_global_keys(&mut self, raw: &mut Raw, keys: &Keys, dt: f32) {
         if raw.f3_press {
             self.debug = !self.debug;
+        }
+        if self.mode == Mode::Tutorial {
+            self.tutorial_t += dt;
+            if self.tutorial_t >= 0.15 && (raw.enter_press || raw.attack_press || raw.h_press || raw.esc_press) {
+                raw.picked = true;
+                raw.enter_held = false;
+                if raw.esc_press {
+                    self.sfx.play(&self.sfx.ui_back);
+                } else {
+                    self.sfx_click();
+                }
+                self.close_tutorial();
+            }
+            return;
+        }
+        if self.script.is_none() && raw.h_press && matches!(self.mode, Mode::Play | Mode::Pause) {
+            self.sfx_click();
+            self.open_tutorial();
+            return;
         }
         // Esc pauses the run and resumes it; on a sub-menu it steps back one screen
         if raw.esc_press {
@@ -559,7 +625,7 @@ impl Game {
                 Mode::Menu => 3,
                 Mode::Difficulty => 4,
                 Mode::Options => 6,
-                Mode::Pause => 3,
+                Mode::Pause => 4,
                 Mode::GameOver => 2,
                 Mode::Reward => 1,
                 Mode::Victory => 2,
@@ -601,7 +667,8 @@ impl Game {
                 }
                 Mode::Pause => match sel {
                     0 => ScreenAction::Resume,
-                    1 => ScreenAction::RestartLevel,
+                    1 => ScreenAction::OpenTutorial,
+                    2 => ScreenAction::RestartLevel,
                     _ => ScreenAction::MainMenu,
                 },
                 Mode::GameOver => {
@@ -650,6 +717,11 @@ impl Game {
                 }
             }
             Mode::Pause => (sfx::BgmKind::Explore, 0.35),
+            Mode::Tutorial => {
+                let has_boss = self.play.enemies.iter().any(|e| e.kind == level::EnemyKind::Warden && e.alive);
+                let kind = if self.play.index == 4 && has_boss { sfx::BgmKind::Boss } else { sfx::BgmKind::Explore };
+                (kind, 0.45)
+            }
             Mode::Reward => (sfx::BgmKind::Explore, 0.65),
             Mode::Victory => (sfx::BgmKind::Victory, 1.0),
             Mode::GameOver => (sfx::BgmKind::GameOver, 1.0),
@@ -914,6 +986,7 @@ impl Game {
                     self.settings = Settings::for_difficulty(d);
                 }
                 self.skills = [false; 4];
+                self.tutorial_seen = [false; 5];
                 self.start_level(0);
             }
             ScreenAction::Options => {
@@ -928,6 +1001,8 @@ impl Game {
                 std::process::exit(0);
             }
             ScreenAction::Resume => self.mode = Mode::Play,
+            ScreenAction::OpenTutorial => self.open_tutorial(),
+            ScreenAction::CloseTutorial => self.close_tutorial(),
             ScreenAction::RestartLevel => {
                 let i = self.play.index;
                 self.start_level(i);
@@ -955,6 +1030,10 @@ impl Game {
             Mode::Menu => action = main_menu(&mut self.menu, &self.assets, t),
             Mode::Difficulty => action = difficulty_menu(&mut self.menu, &self.assets, t),
             Mode::Options => action = options_menu(&mut self.menu, &self.assets, &mut self.options, t),
+            Mode::Tutorial => {
+                self.draw_play();
+                action = tutorial_popup(&mut self.menu, &self.assets, self.play.index, self.tutorial_t);
+            }
             Mode::Play => self.draw_play(),
             Mode::Pause => {
                 self.draw_play();
@@ -1023,10 +1102,27 @@ impl Game {
             keys_bound: ["Shift", "Q", "R", "F"],
         };
         ui::draw_hud(&hud, screen_width());
-        if self.scene_t < 6.0 {
+        if self.mode == Mode::Play && self.scene_t < 6.0 {
             toast(&self.play.hint, screen_width(), screen_height(), (6.0 - self.scene_t).min(1.0));
         }
         let dbg_note = if self.debug { "  |  [F3] Hitbox: ON" } else { "  |  F3: hitbox" };
-        label_left(&format!("{}  |  Esc: jeda{}", self.settings.name(), dbg_note), 16.0, screen_height() - 16.0, 18.0, col(TEXT_DIM));
+        label_left(
+            &format!("{}  |  Esc: jeda  |  H: panduan{}", self.settings.name(), dbg_note),
+            16.0,
+            screen_height() - 16.0,
+            18.0,
+            col(TEXT_DIM),
+        );
+        if self.mode == Mode::Play {
+            let sw = screen_width();
+            let sh = screen_height();
+            let prelim = Rect::new(sw - 170.0, sh - 42.0, 154.0, 34.0);
+            let hover = prelim.contains(self.menu.mouse);
+            let badge_r = ui::draw_help_badge(&self.assets.key_h, sw, sh, hover);
+            if self.script.is_none() && self.menu.clicked && badge_r.contains(self.menu.mouse) {
+                self.sfx_click();
+                self.open_tutorial();
+            }
+        }
     }
 }

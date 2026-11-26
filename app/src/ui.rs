@@ -132,3 +132,23 @@ pub fn toast(text: &str, sw: f32, sh: f32, alpha: f32) {
     draw_rectangle_lines(r.x, r.y, r.w, r.h, 1.5, col_a(PANEL_EDGE, 0.6 * a));
     label(text, r.x + r.w * 0.5, r.y + 29.0, 20.0, col_a(TEXT, a));
 }
+
+/// Bottom-right `[H] Panduan` pixel-art keycap badge shown during gameplay; returns its clickable rect.
+pub fn draw_help_badge(key_h: &SpriteSheet, sw: f32, sh: f32, hover: bool) -> Rect {
+    let kh = 24.0;
+    let kw = if key_h.fh > 0.0 { (key_h.fw / key_h.fh) * kh } else { 24.0 };
+    let txt = "Panduan";
+    let fs = macroquad::text::measure_text(txt, None, 18, 1.0);
+    let pad_x = 10.0;
+    let gap = 8.0;
+    let bw = pad_x * 2.0 + kw + gap + fs.width;
+    let bh = 34.0;
+    let r = Rect::new(sw - bw - 16.0, sh - bh - 8.0, bw, bh);
+    let bg_alpha = if hover { 0.94 } else { 0.80 };
+    let border_col = if hover { col(GOLD) } else { col_a(PANEL_EDGE, 0.85) };
+    draw_rectangle(r.x, r.y, r.w, r.h, Color::new(0.04, 0.03, 0.06, bg_alpha));
+    draw_rectangle_lines(r.x, r.y, r.w, r.h, 1.5, border_col);
+    key_h.draw_in(0, Rect::new(r.x + pad_x, r.y + (bh - kh) * 0.5, kw, kh));
+    label_left(txt, r.x + pad_x + kw + gap, r.y + 23.0, 18.0, if hover { col(GOLD) } else { col(TEXT) });
+    r
+}

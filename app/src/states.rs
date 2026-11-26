@@ -23,6 +23,8 @@ pub enum ScreenAction {
     Back,
     Quit,
     Resume,
+    OpenTutorial,
+    CloseTutorial,
     RestartLevel,
     NextLevel,
     MainMenu,
@@ -214,22 +216,62 @@ pub fn options_menu(m: &mut Menu, a: &Assets, o: &mut OptionsState, t: f32) -> S
     act
 }
 
+pub fn tutorial_popup(m: &mut Menu, a: &Assets, level_index: usize, open_t: f32) -> ScreenAction {
+    let (sw, sh) = (screen_width(), screen_height());
+    let dpi = miniquad::window::dpi_scale().max(1.0);
+    let fade = (open_t / 0.14).clamp(0.0, 1.0);
+    draw_rectangle(0.0, 0.0, sw, sh, Color::new(0.0, 0.0, 0.0, 0.76 * fade));
+
+    let sheet = &a.tutorial_popups[level_index.min(a.tutorial_popups.len() - 1)];
+    let (pw, ph) = (sheet.fw.max(1.0), sheet.fh.max(1.0));
+    let (phys_sw, phys_sh) = (sw * dpi, sh * dpi);
+
+    // Compute exact integer physical-pixel scale (1x = 700x420, 2x = 1400x840, etc.) regardless of Windows DPI scaling.
+    let phys_scale = if phys_sw >= pw * 2.0 + 96.0 && phys_sh >= ph * 2.0 + 96.0 {
+        2.0
+    } else if phys_sw >= pw + 32.0 && phys_sh >= ph + 32.0 {
+        1.0
+    } else {
+        ((phys_sw - 32.0) / pw).min((phys_sh - 32.0) / ph).max(0.4)
+    };
+    let pop = if open_t < 0.12 {
+        0.94 + 0.06 * (open_t / 0.12).clamp(0.0, 1.0)
+    } else {
+        1.0
+    };
+    let phys_dw = (pw * phys_scale * pop).round();
+    let phys_dh = (ph * phys_scale * pop).round();
+    let phys_x = ((phys_sw - phys_dw) * 0.5).round();
+    let phys_y = ((phys_sh - phys_dh) * 0.5).round();
+
+    let r = Rect::new(phys_x / dpi, phys_y / dpi, phys_dw / dpi, phys_dh / dpi);
+
+    draw_rectangle(r.x + 8.0 / dpi, r.y + 10.0 / dpi, r.w, r.h, Color::new(0.0, 0.0, 0.0, 0.65 * fade));
+    sheet.draw_in(0, r);
+
+    if open_t >= 0.15 && m.clicked {
+        return ScreenAction::CloseTutorial;
+    }
+    ScreenAction::None
+}
+
 pub fn pause_menu(m: &mut Menu, a: &Assets, t: f32) -> ScreenAction {
     let (sw, sh) = (screen_width(), screen_height());
     let dim = 0.58 + (t * 0.6).sin() * 0.02;
     draw_rectangle(0.0, 0.0, sw, sh, Color::new(0.0, 0.0, 0.0, dim));
-    let p = Rect::new(sw * 0.5 - 240.0, sh * 0.5 - 190.0, 480.0, 380.0);
+    let p = Rect::new(sw * 0.5 - 240.0, sh * 0.5 - 220.0, 480.0, 440.0);
     panel(p);
-    label("JEDA", sw * 0.5, p.y + 66.0, 44.0, GOLD_COL);
-    let items = ["Lanjutkan", "Ulangi Level", "Menu Utama"];
+    label("JEDA", sw * 0.5, p.y + 60.0, 44.0, GOLD_COL);
+    let items = ["Lanjutkan", "Panduan Level", "Ulangi Level", "Menu Utama"];
     let mut act = ScreenAction::None;
     for (i, it) in items.iter().enumerate() {
-        let r = Rect::new(p.x + 60.0, p.y + 100.0 + i as f32 * 76.0, p.w - 120.0, 58.0);
+        let r = Rect::new(p.x + 60.0, p.y + 94.0 + i as f32 * 74.0, p.w - 120.0, 56.0);
         if button(a, r, it, r.contains(m.mouse) || m.sel == i, m.mouse, m.clicked) {
             m.sel = i;
             act = match i {
                 0 => ScreenAction::Resume,
-                1 => ScreenAction::RestartLevel,
+                1 => ScreenAction::OpenTutorial,
+                2 => ScreenAction::RestartLevel,
                 _ => ScreenAction::MainMenu,
             };
         }

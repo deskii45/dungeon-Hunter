@@ -39,19 +39,36 @@ Game ini **tidak menggunakan engine siap pakai** seperti Unity, Godot, atau Unre
 
 - **29 Audio WAV** — BGM dan SFX polyphonic (footsteps, combat, UI, ambient)
 
+- **Popup Panduan Interaktif (Level 1–5)** — Panduan kontrol, skill baru, dan misi otomatis tampil sebelum memulai tiap level serta dapat dibuka kembali kapan saja dengan tombol `H`
+
 - **Kontrol Responsif** — Low-latency input menggunakan Win32 `GetAsyncKeyState`
 
 ---
 
-## 🛠️ Teknologi / Tech Stack
+## ⚙️ Bahasa Pemrograman & Game Engine
+
+Game ini **bukan dibangun menggunakan game engine komersial/GUI** seperti Unity, Godot, atau Unreal Engine, melainkan dibangun **dari nol (*custom engine from scratch*)** secara native:
+
+1. **Bahasa Pemrograman — Rust (Edition 2021)**
+   - Seluruh logika permainan, AI musuh, sistem *collision* & *hitbox* presisi piksel, kamera, animasi *sprite*, hingga *state machine* ditulis murni dalam bahasa **Rust** dan dikompilasi langsung menjadi file biner mesin asli Windows (`.exe`) berukuran sangat ringan (hanya beberapa MB) dengan waktu muat instan.
+2. **Framework Grafis & Windowing — Macroquad (`v0.4.16`) & Miniquad (`v0.4.11`)**
+   - Menggunakan library grafis 2D berbasis **OpenGL** yang ringan dengan `FilterMode::Nearest` dan kalibrasi *High-DPI physical pixel scaling* agar seluruh pixel-art tampil tajam tanpa kabur di berbagai resolusi layar.
+3. **Custom Audio & Input Low-Level — Win32 API**
+   - **Audio Engine**: Mixer PCM 16-bit 44.1 kHz *polyphonic* kustom yang terhubung langsung ke driver suara Windows (`winmm.dll / WaveOut`) di `app/src/sfx.rs` untuk memutar BGM *looping* dan puluhan efek suara bersamaan tanpa library audio eksternal yang berat.
+   - **Input Zero-Latency**: Pembacaan status tombol perangkat keras langsung melalui Win32 `GetAsyncKeyState` yang dipadukan dengan sinkronisasi frame `glFinish` dan sistem *DirStack / Last-Key Priority* agar belokan karakter `WASD` instan tanpa *input lag*.
+4. **Data-Driven Level — Serde & JSON**
+   - Ke-5 peta lantai dungeon dimuat secara dinamis dari file JSON (`15×11` grid ubin berukuran `64×64` px) menggunakan `serde_json`.
+
+### 🛠️ Ringkasan Tech Stack
 
 | Komponen | Teknologi |
 |----------|-----------|
 | Bahasa Pemrograman | **Rust** (Edition 2021) |
-| Framework Grafis | **Macroquad** 0.4.16 (OpenGL) |
+| Engine / Arsitektur | **Custom 2D Engine** (tanpa Unity / Godot / Unreal) |
+| Framework Grafis | **Macroquad** 0.4.16 + **Miniquad** 0.4.11 (OpenGL) |
 | Audio Engine | Custom **Win32 WaveOut** PCM mixer (`winmm.dll`) |
-| Input System | **Win32 GetAsyncKeyState** (zero-delay) |
-| Map Format | **JSON** (parsed with `serde_json`) |
+| Input System | **Win32 GetAsyncKeyState** + `glFinish` frame-sync |
+| Map Format | **JSON** (diparsing dengan `serde` & `serde_json`) |
 | Map Grid | 15×11 tiles, 64px per tile |
 | Build System | **Cargo** + `build.bat` |
 
@@ -99,6 +116,7 @@ dungeon-hunter/
     │   └── traps_and_puzzles/   ← 6 trap/puzzle types
     ├── tilesets/                ← Dungeon tileset
     └── ui/                      ← Menu buttons, HUD elements
+        └── tutorial/            ← Popup panduan Level 1–5 & ikon keycaps
 ```
 
 ---
@@ -163,8 +181,13 @@ Lalu jalankan executable yang dihasilkan:
 | `A` | Gerak Kiri |
 | `S` | Gerak Bawah |
 | `D` | Gerak Kanan |
-| `Space` | Serang / Aksi |
-| `E` | Gunakan Skill |
+| `Space` / `J` | Serang Belati |
+| `E` | Interaksi / Buka Gerbang / Pilar Rune / Obor |
+| `Shift` | Skill Dash Step |
+| `Q` | Skill Flare Pulse |
+| `R` | Skill Stone Shield |
+| `F` | Skill Phase Blink |
+| `H` | Buka / Tutup Popup Panduan Level |
 | `Esc` | Pause / Menu |
 
 ---
@@ -172,10 +195,11 @@ Lalu jalankan executable yang dihasilkan:
 ## 🖼️ Opsi Command Line
 
 ```bash
-dungeon_hunter.exe                       # Jalankan game normal
-dungeon_hunter.exe --debug               # Mode debug (timing info di konsol)
-dungeon_hunter.exe --screenshot out.png  # Render 120 frame, simpan screenshot, keluar
-dungeon_hunter.exe --self-test out.json  # Jalankan scripted test, tulis hasil, keluar
+dungeon_hunter.exe                                     # Jalankan game normal
+dungeon_hunter.exe --debug                             # Mode debug (hitbox & timing info)
+dungeon_hunter.exe --screenshot out.png                # Render 120 frame, simpan screenshot, keluar
+dungeon_hunter.exe --tutorial 1 --screenshot out.png   # Render popup tutorial level tertentu ke PNG
+dungeon_hunter.exe --self-test out.json                # Jalankan scripted test, tulis hasil, keluar
 ```
 
 ---
@@ -190,8 +214,9 @@ cargo test --offline
 ```
 
 Test yang tersedia:
-- `world::tests` — World simulation & game logic
-- `sfx::tests` — Audio system validation
+- `world::tests` — Simulasi dunia, kontrol WASD, hitbox, & mekanik puzzle/map
+- `sfx::tests` — Validasi pemuatan 29 file audio WAV
+- `assets::tests` — Validasi pemuatan popup panduan Level 1–5 & ikon keycaps
 
 ---
 

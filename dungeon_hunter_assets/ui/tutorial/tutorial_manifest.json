@@ -1,0 +1,113 @@
+{
+  "version": "1.0.0",
+  "game": "Dungeon Hunter",
+  "popups": [
+    {
+      "level": 1,
+      "file": "ui/tutorial/popup_level_1.png",
+      "size": [
+        700,
+        420
+      ],
+      "title": "LEVEL 1: GUA LUMUT"
+    },
+    {
+      "level": 2,
+      "file": "ui/tutorial/popup_level_2.png",
+      "size": [
+        700,
+        420
+      ],
+      "title": "LEVEL 2: LORONG GEMA"
+    },
+    {
+      "level": 3,
+      "file": "ui/tutorial/popup_level_3.png",
+      "size": [
+        700,
+        420
+      ],
+      "title": "LEVEL 3: RUANG RUNE"
+    },
+    {
+      "level": 4,
+      "file": "ui/tutorial/popup_level_4.png",
+      "size": [
+        700,
+        420
+      ],
+      "title": "LEVEL 4: LABIRIN BAYANGAN"
+    },
+    {
+      "level": 5,
+      "file": "ui/tutorial/popup_level_5.png",
+      "size": [
+        700,
+        420
+      ],
+      "title": "LEVEL 5: KUBAH OBSIDIAN"
+    }
+  ],
+  "keycaps": [
+    {
+      "key": "W",
+      "file": "ui/tutorial/keycaps/key_w.png"
+    },
+    {
+      "key": "A",
+      "file": "ui/tutorial/keycaps/key_a.png"
+    },
+    {
+      "key": "S",
+      "file": "ui/tutorial/keycaps/key_s.png"
+    },
+    {
+      "key": "D",
+      "file": "ui/tutorial/keycaps/key_d.png"
+    },
+    {
+      "key": "WASD",
+      "file": "ui/tutorial/keycaps/key_wasd.png"
+    },
+    {
+      "key": "PANAH",
+      "file": "ui/tutorial/keycaps/key_arrows.png"
+    },
+    {
+      "key": "SPACE",
+      "file": "ui/tutorial/keycaps/key_space.png"
+    },
+    {
+      "key": "J",
+      "file": "ui/tutorial/keycaps/key_j.png"
+    },
+    {
+      "key": "E",
+      "file": "ui/tutorial/keycaps/key_e.png"
+    },
+    {
+      "key": "SHIFT",
+      "file": "ui/tutorial/keycaps/key_shift.png"
+    },
+    {
+      "key": "Q",
+      "file": "ui/tutorial/keycaps/key_q.png"
+    },
+    {
+      "key": "R",
+      "file": "ui/tutorial/keycaps/key_r.png"
+    },
+    {
+      "key": "F",
+      "file": "ui/tutorial/keycaps/key_f.png"
+    },
+    {
+      "key": "ESC",
+      "file": "ui/tutorial/keycaps/key_esc.png"
+    },
+    {
+      "key": "H",
+      "file": "ui/tutorial/keycaps/key_h.png"
+    }
+  ]
+}

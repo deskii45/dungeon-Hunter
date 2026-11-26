@@ -52,6 +52,9 @@ pub struct Assets {
     pub btn_normal: SpriteSheet,
     pub btn_hover: SpriteSheet,
     pub hearts: SpriteSheet,
+    pub tutorial_popups: [SpriteSheet; 5],
+    pub tutorial_frame: SpriteSheet,
+    pub key_h: SpriteSheet,
 
     pub hero_idle: SpriteSheet,
     pub hero_walk_down: SpriteSheet,
@@ -115,6 +118,15 @@ impl Assets {
                 r.join("ui/heart_half.png"),
                 r.join("ui/heart_empty.png"),
             ]),
+            tutorial_popups: [
+                single(r, "ui/tutorial/popup_level_1.png"),
+                single(r, "ui/tutorial/popup_level_2.png"),
+                single(r, "ui/tutorial/popup_level_3.png"),
+                single(r, "ui/tutorial/popup_level_4.png"),
+                single(r, "ui/tutorial/popup_level_5.png"),
+            ],
+            tutorial_frame: single(r, "ui/tutorial/panel_frame_700x420.png"),
+            key_h: single(r, "ui/tutorial/keycaps/key_h.png"),
 
             hero_idle: seq(r, "sprites/player/frames/kaelen_idle", 4),
             hero_walk_down: seq(r, "sprites/player/frames/kaelen_walk_down", 4),
@@ -190,6 +202,38 @@ impl Assets {
             "floor_shadow" => &self.floor_shadow,
             "floor_obsidian" => &self.floor_obsidian,
             _ => &self.floor_moss,
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn all_tutorial_ui_assets_exist_and_have_valid_png_headers() {
+        let root = find_assets_dir();
+        for lvl in 1..=5 {
+            let p = root.join(format!("ui/tutorial/popup_level_{}.png", lvl));
+            let bytes = std::fs::read(&p).unwrap_or_else(|e| panic!("missing {:?}: {}", p, e));
+            assert!(bytes.starts_with(b"\x89PNG\r\n\x1a\n"), "invalid PNG signature in {:?}", p);
+            let w = u32::from_be_bytes([bytes[16], bytes[17], bytes[18], bytes[19]]);
+            let h = u32::from_be_bytes([bytes[20], bytes[21], bytes[22], bytes[23]]);
+            assert_eq!((w, h), (700, 420), "unexpected dimensions for {:?}", p);
+        }
+
+        let frame = root.join("ui/tutorial/panel_frame_700x420.png");
+        let fbytes = std::fs::read(&frame).expect("missing panel_frame_700x420.png");
+        assert!(fbytes.starts_with(b"\x89PNG\r\n\x1a\n"));
+
+        let keys = [
+            "key_w", "key_a", "key_s", "key_d", "key_wasd", "key_arrows", "key_space", "key_j",
+            "key_e", "key_shift", "key_q", "key_r", "key_f", "key_esc", "key_h",
+        ];
+        for k in keys {
+            let kp = root.join(format!("ui/tutorial/keycaps/{}.png", k));
+            let kbytes = std::fs::read(&kp).unwrap_or_else(|e| panic!("missing {:?}: {}", kp, e));
+            assert!(kbytes.starts_with(b"\x89PNG\r\n\x1a\n"), "invalid PNG signature in {:?}", kp);
         }
     }
 }
